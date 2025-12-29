@@ -1,16 +1,55 @@
 ---
-
+import MainLayout from "../layouts/MainLayout.astro";
+import { services } from "../data/services";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <section id="services" class="py-24 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-16">
+        <h2
+          class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-2"
+        >
+          Capabilities
+        </h2>
+        <h3 class="text-4xl md:text-5xl font-black text-white">
+          Commercial Drone Solutions
+        </h3>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {
+          services.map((service) => (
+            <a
+              href={`/services/${service.id}`}
+              class="group relative p-8 bg-slate-800/40 border border-white/5 rounded-3xl hover:border-orange-500/50 hover:bg-slate-800/60 transition-all duration-300 block"
+            >
+              <div class="text-4xl mb-6">{service.icon}</div>
+
+              <h4 class="text-2xl font-bold text-white mb-4 group-hover:text-orange-500 transition-colors">
+                {service.title}
+              </h4>
+
+              <p class="text-slate-400 mb-8 leading-relaxed">
+                {service.description}
+              </p>
+
+              <ul class="space-y-3 mb-8">
+                {service.features.map((feature) => (
+                  <li class="flex items-center text-sm text-slate-300">
+                    <span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-125 transition-transform" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="inline-flex items-center text-orange-500 font-bold group-hover:translate-x-2 transition-transform">
+                Learn More <span class="ml-2">→</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</MainLayout>

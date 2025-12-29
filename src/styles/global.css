@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Force Tailwind to scan Astro files */
+@source "../../src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}";

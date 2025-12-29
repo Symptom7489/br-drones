@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main # Ensure this matches your GitHub branch
+
+media_folder: "src/assets" # Where drone photos will be uploaded
+public_folder: "../../assets"
+
+collections:
+  - name: "portfolio"
+    label: "Mission Logs"
+    folder: "src/content/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Client Name", name: "client", widget: "string" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - {
+          label: "Industry",
+          name: "industry",
+          widget: "select",
+          options: ["Surveying", "Real Estate", "Industrial", "Agriculture"],
+        }
+      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
+      - {
+          label: "Precision Accuracy (Optional)",
+          name: "accuracy",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Sensor Used (Optional)",
+          name: "sensor",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Deliverables List", name: "deliverables", widget: "list" }
+      - { label: "Case Study Text", name: "body", widget: "markdown" }

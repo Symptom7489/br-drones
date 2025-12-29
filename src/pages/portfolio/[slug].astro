@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// 1. Generate a path for every entry in the 'portfolio' collection
+export async function getStaticPaths() {
+  const portfolioEntries = await getCollection('portfolio');
+  return portfolioEntries.map(entry => ({
+    params: { slug: entry.slug }, // This matches the [slug] in the filename
+    props: { entry },
+  }));
+}
+
+// 2. Get the entry data from props
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<MainLayout title={`${entry.data.title} | Case Study`}>
+  <article class="py-20 px-6 max-w-4xl mx-auto">
+    <header class="mb-12 border-b border-white/10 pb-12">
+      <div class="flex items-center gap-4 mb-6">
+         <span class="text-orange-500 font-bold uppercase tracking-widest text-sm">
+           {entry.data.industry}
+         </span>
+         <span class="text-slate-500">—</span>
+         <span class="text-slate-400 font-medium">{entry.data.client}</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+        {entry.data.title}
+      </h1>
+    </header>
+
+    <div class="prose prose-invert prose-orange max-w-none 
+                prose-headings:font-black prose-headings:uppercase 
+                prose-p:text-slate-300 prose-p:leading-relaxed text-lg">
+      <Content />
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-white/10">
+      <a href="/portfolio" class="text-orange-500 font-bold hover:underline inline-flex items-center">
+        ← Back to Portfolio
+      </a>
+    </div>
+  </article>
+</MainLayout>

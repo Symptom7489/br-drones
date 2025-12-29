@@ -1,0 +1,39 @@
+---
+// src/layouts/MainLayout.astro
+const { title = "Baton Rouge Drones | Professional Aerial Services" } = Astro.props;
+import "../styles/global.css";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.15/dist/typography.min.css"
+        />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-slate-900 text-white font-sans selection:bg-orange-500">
+		<nav class="flex justify-between items-center p-6 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
+			<a href="/" class="group transition-all hover:opacity-90">
+				<div class="text-2xl font-bold tracking-tighter uppercase italic text-orange-500">
+					BR <span class="text-white group-hover:text-orange-500 transition-colors">Drones</span>
+				</div>
+			</a>
+			<div class="space-x-8 hidden md:flex font-medium text-sm">
+				<a href="/" class="hover:text-orange-500 transition">Home</a>
+				<a href="services" class="hover:text-orange-500 transition">Services</a>
+				<a href="portfolio" class="hover:text-orange-500 transition">Portfolio</a>
+				<a href="/portal" class="bg-orange-600 px-4 py-2 rounded-lg hover:bg-orange-700 transition">Client Login</a>
+			</div>
+		</nav>
+
+		<slot />
+
+		<footer class="p-10 bg-black border-t border-white/5 text-center text-slate-500 text-sm">
+			&copy; 2025 Baton Rouge Drones. Licensed & Insured.
+		</footer>
+	</body>
+</html>
