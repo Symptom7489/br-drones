@@ -1,10 +1,14 @@
 ---
-title: "Quarterly Inventory Audit: Asphalt Plant A"
+title: "Quarterly Inventory Audit"
 client: "Baton Rouge Materials"
 publishDate: 2025-01-15
-industry: "Surveying"
-thumbnail: ./stockpile-image.png
-deliverables: ["Volumetric Report", "3D Mesh", "Orthomosaic Map"]
+industry: "Aggregate"
+thumbnail: "../assets/stockpile-image.jpg"
+accuracy: "±0.5%"
+sensor: "20MP CMOS"
+software: "DJI Terra / Propeller"
+videoID: "dQw4w9WgXcQ"  
+pdfUrl: "/reports/sample-audit.pdf"
 ---
 
 ### The Challenge
