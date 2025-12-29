@@ -1,0 +1,217 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Mission Briefing | Baton Rouge Drones">
+    <section class="relative py-24 bg-slate-950 min-h-screen">
+        <div
+            class="absolute inset-0 z-0 opacity-10"
+            style="background-image: radial-gradient(#f97316 0.5px, transparent 0.5px); background-size: 30px 30px;"
+        >
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto grid lg:grid-cols-3 gap-16">
+                <div class="lg:col-span-1">
+                    <h3
+                        class="text-orange-500 font-bold uppercase tracking-widest text-sm mb-4"
+                    >
+                        Step 01: Logistics
+                    </h3>
+                    <h1
+                        class="text-5xl font-black text-white italic uppercase leading-[0.9] mb-8"
+                    >
+                        Request an <span class="text-orange-500">Estimate</span>
+                    </h1>
+
+                    <div class="space-y-8">
+                        <div class="border-l-2 border-orange-500/30 pl-6">
+                            <p
+                                class="text-white font-bold uppercase tracking-tight mb-2"
+                            >
+                                Airspace Authorization
+                            </p>
+                            <p class="text-slate-400 text-sm">
+                                We handle all FAA LAANC authorizations for
+                                missions in restricted airspace near BTR, MSY,
+                                and regional airports.
+                            </p>
+                        </div>
+
+                        <div class="border-l-2 border-orange-500/30 pl-6">
+                            <p
+                                class="text-white font-bold uppercase tracking-tight mb-2"
+                            >
+                                Turnaround Time
+                            </p>
+                            <p class="text-slate-400 text-sm">
+                                Most estimates are processed within 24 hours.
+                                Emergency site inspections are available upon
+                                request.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="lg:col-span-2 bg-slate-900/50 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-sm"
+                >
+                    <form
+                        name="estimate"
+                        method="POST"
+                        data-netlify="true"
+                        class="space-y-8"
+                    >
+                        <input
+                            type="hidden"
+                            name="form-name"
+                            value="estimate"
+                        />
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-2">
+                                <label
+                                    class="text-[10px] font-black text-orange-500 uppercase tracking-widest"
+                                    >Client Name</label
+                                >
+                                <input
+                                    type="text"
+                                    name="name"
+                                    required
+                                    class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-orange-500 outline-none transition-all placeholder:text-slate-700"
+                                    placeholder="Contact Person"
+                                />
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    class="text-[10px] font-black text-orange-500 uppercase tracking-widest"
+                                    >Email Address</label
+                                >
+                                <input
+                                    type="email"
+                                    name="email"
+                                    required
+                                    class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-orange-500 outline-none transition-all placeholder:text-slate-700"
+                                    placeholder="email@company.com"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-2">
+                                <label
+                                    class="text-[10px] font-black text-orange-500 uppercase tracking-widest"
+                                    >Mission Type</label
+                                >
+                                <select
+                                    name="service"
+                                    class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-orange-500 outline-none transition-all appearance-none"
+                                >
+                                    <option>Aggregate Volumetrics</option>
+                                    <option>Construction Progress</option>
+                                    <option>Property Inspection</option>
+                                    <option>Real Estate Marketing</option>
+                                    <option>3D Scanning / Forensic</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    class="text-[10px] font-black text-orange-500 uppercase tracking-widest"
+                                    >Location (City/Parish)</label
+                                >
+                                <input
+                                    type="text"
+                                    name="location"
+                                    required
+                                    class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-orange-500 outline-none transition-all placeholder:text-slate-700"
+                                    placeholder="e.g. Baton Rouge, LA"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] font-black text-orange-500 uppercase tracking-widest"
+                                >Project Description</label
+                            >
+                            <textarea
+                                name="description"
+                                rows="5"
+                                required
+                                class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-orange-500 outline-none transition-all placeholder:text-slate-700"
+                                placeholder="Please describe the site and specific deliverables required (e.g. orthomosaic map, weekly video updates, etc.)"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="group w-full bg-orange-500 hover:bg-white text-black font-black uppercase italic py-5 rounded-2xl transition-all flex items-center justify-center gap-3"
+                        >
+                            Transmit Briefing
+                            <span
+                                class="group-hover:translate-x-2 transition-transform"
+                                >→</span
+                            >
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div
+        id="success-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4"
+    >
+        <div
+            class="bg-slate-900 border border-orange-500/30 p-8 md:p-12 rounded-3xl max-w-lg w-full text-center shadow-2xl"
+        >
+            <div
+                class="inline-flex items-center justify-center w-20 h-20 bg-orange-500/20 border border-orange-500/50 rounded-full mb-6"
+            >
+                <span class="text-orange-500 text-4xl">✓</span>
+            </div>
+            <h2 class="text-3xl font-black text-white italic uppercase mb-4">
+                Mission Received
+            </h2>
+            <p class="text-slate-400 mb-8 leading-relaxed">
+                Your briefing has been transmitted. Joe will review the
+                coordinates and requirements and reach out shortly.
+            </p>
+            <button
+                id="close-modal"
+                class="w-full bg-orange-500 hover:bg-white text-black font-black uppercase italic py-4 rounded-xl transition-all"
+            >
+                Return to Base
+            </button>
+        </div>
+    </div>
+</MainLayout>
+<script is:inline>
+    const form = document.querySelector('form[name="estimate"]');
+    const modal = document.getElementById("success-modal");
+    const closeBtn = document.getElementById("close-modal");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => {
+                // Show the modal
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                form.reset(); // Clear the form fields
+            })
+            .catch((error) => alert("Submission failed: " + error));
+    });
+
+    // Close modal and go back to homepage (or just hide it)
+    closeBtn.addEventListener("click", () => {
+        window.location.href = "/";
+    });
+</script>

@@ -1,46 +1,111 @@
 ---
-import { getCollection, render } from 'astro:content';
-import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, render } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
 
-// 1. Generate a path for every entry in the 'portfolio' collection
 export async function getStaticPaths() {
-  const portfolioEntries = await getCollection('portfolio');
-  return portfolioEntries.map(entry => ({
-    params: { slug: entry.slug }, // This matches the [slug] in the filename
+  const portfolioEntries = await getCollection("portfolio");
+  return portfolioEntries.map((entry) => ({
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
-// 2. Get the entry data from props
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<MainLayout title={`${entry.data.title} | Case Study`}>
-  <article class="py-20 px-6 max-w-4xl mx-auto">
-    <header class="mb-12 border-b border-white/10 pb-12">
-      <div class="flex items-center gap-4 mb-6">
-         <span class="text-orange-500 font-bold uppercase tracking-widest text-sm">
-           {entry.data.industry}
-         </span>
-         <span class="text-slate-500">—</span>
-         <span class="text-slate-400 font-medium">{entry.data.client}</span>
-      </div>
-      <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
-        {entry.data.title}
-      </h1>
-    </header>
-
-    <div class="prose prose-invert prose-orange max-w-none 
-                prose-headings:font-black prose-headings:uppercase 
-                prose-p:text-slate-300 prose-p:leading-relaxed text-lg">
-      <Content />
-    </div>
-
-    <div class="mt-20 pt-10 border-t border-white/10">
-      <a href="/portfolio" class="text-orange-500 font-bold hover:underline inline-flex items-center">
-        ← Back to Portfolio
+<MainLayout title={`${entry.data.title} | Baton Rouge Drones`}>
+  <section class="bg-slate-950 pt-32 pb-24 text-white">
+    <div class="container mx-auto px-6">
+      <a
+        href="/portfolio"
+        class="text-orange-500 text-xs font-black uppercase tracking-widest mb-8 inline-block hover:text-white transition-colors"
+      >
+        ← Return to Operations Log
       </a>
+
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-12">
+          <div
+            class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+          >
+            <img
+              src={entry.data.thumbnail}
+              class="w-full h-auto"
+              alt={entry.data.title}
+            />
+          </div>
+
+          <div class="prose prose-invert prose-orange max-w-none">
+            <h1
+              class="text-5xl font-black italic uppercase italic tracking-tighter mb-8"
+            >
+              {entry.data.title}
+            </h1>
+            <Content />
+          </div>
+        </div>
+
+        <div class="lg:col-span-1">
+          <div
+            class="sticky top-32 bg-slate-900 border border-white/5 p-8 rounded-3xl space-y-8"
+          >
+            <div>
+              <h4
+                class="text-orange-500 font-black uppercase tracking-widest text-[10px] mb-4"
+              >
+                Mission Specs
+              </h4>
+              <div class="space-y-4">
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                  <span class="text-slate-400 text-sm">Client</span>
+                  <span class="font-bold">{entry.data.client}</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                  <span class="text-slate-400 text-sm">Industry</span>
+                  <span class="font-bold">{entry.data.industry}</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                  <span class="text-slate-400 text-sm">Accuracy</span>
+                  <span class="font-bold text-orange-400 font-mono"
+                    >{entry.data.accuracy || "Standard"}</span
+                  >
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                  <span class="text-slate-400 text-sm">Sensor</span>
+                  <span class="font-bold text-sm"
+                    >{entry.data.sensor || "Enterprise"}</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4
+                class="text-orange-500 font-black uppercase tracking-widest text-[10px] mb-4"
+              >
+                Status
+              </h4>
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full"
+              >
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                ></span>
+                <span class="text-green-500 text-[10px] font-black uppercase"
+                  >Mission Archived</span
+                >
+              </div>
+            </div>
+
+            <a
+              href="/estimate"
+              class="block w-full bg-orange-500 text-black text-center font-black uppercase italic py-4 rounded-xl hover:bg-white transition-all"
+            >
+              Request Similar Mission
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </article>
+  </section>
 </MainLayout>
