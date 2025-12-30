@@ -3,7 +3,7 @@ title: "Quarterly Inventory Audit"
 client: "Baton Rouge Materials"
 publishDate: 2025-01-15
 industry: "Aggregate"
-thumbnail: "../assets/stockpile-image.jpg"
+thumbnail: "/assets/stockpile-image.jpg"
 accuracy: "±0.5%"
 sensor: "20MP CMOS"
 software: "DJI Terra / Propeller"

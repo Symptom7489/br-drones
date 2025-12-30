@@ -3,7 +3,7 @@ title: "I-10 Expansion Progress & Traffic Audit"
 client: "Gulf South Constructors"
 publishDate: 2025-02-10
 industry: "Construction"
-thumbnail: "../assets/construction-hero.jpg"
+thumbnail: "/assets/construction-hero.jpg"
 accuracy: "±2.0cm"
 sensor: "Mechanical Shutter (High Speed)"
 software: "DroneDeploy / Pix4D"

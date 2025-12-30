@@ -3,7 +3,7 @@ title: "Undeveloped Land & Utility Geolocation"
 client: "Private Equity Group"
 publishDate: 2025-03-05
 industry: "Property Inspection"
-thumbnail: "../assets/land-inspection.jpg"
+thumbnail: "/assets/land-inspection.jpg"
 accuracy: "Relative"
 sensor: "RGB + Zoom"
 software: "Custom Geolocation Overlays"

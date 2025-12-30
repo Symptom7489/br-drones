@@ -3,7 +3,7 @@ title: "Riverside Estate Cinematic Showcase"
 client: "Select Realty Group"
 publishDate: 2025-03-20
 industry: "Real Estate"
-thumbnail: "../assets/luxury-home.jpg"
+thumbnail: "/assets/luxury-home.jpg"
 accuracy: "Visual"
 sensor: "4K 60fps / 10-bit Color"
 software: "Adobe Premiere / DaVinci Resolve"
